@@ -1,10 +1,7 @@
 # Installs the latest VS Code
-Write-Host -ForegroundColor Green "Installing VS Code..."
 winget install --id Microsoft.VisualStudioCode --accept-package-agreements --accept-source-agreements
-Write-Host -ForegroundColor Green "✔ VS Code Installed"
 
-
-Write-Host -ForegroundColor Green "Configuring VS Code..."
+Write-Host -ForegroundColor Green "✔ VS Code Installed."
 
 # Define GitHub repository and VS Code paths
 $repoUrl = "https://raw.githubusercontent.com/flick9000/vscode-setup/main"
@@ -27,7 +24,6 @@ Write-Host -ForegroundColor Green "✔ Copied keybindings.json to VS Code."
 # Refresh environment variables
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 Write-Host -ForegroundColor Green "✔ Environment variables refreshed."
-
 
 # Download and install extensions
 $extensionsJson = "$env:TEMP\extensions.json"
