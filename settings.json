@@ -108,6 +108,8 @@
     "sideBar.background": "#0a0a0a",
     "editor.background": "#0a0a0a",
     "statusBar.background": "#0a0a0a",
+    "statusBar.debuggingBackground": "#0a0a0a",
+    "statusBar.noFolderBackground": "#0a0a0a",
     "menu.background": "#141414",
     "terminal.background": "#0a0a0a",
     "panel.background": "#0a0a0a",
