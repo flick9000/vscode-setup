@@ -10,6 +10,12 @@ Write-Output "Configuring VS Code..."
 $repoUrl = "https://raw.githubusercontent.com/flick9000/vscode-setup/main"
 $vsCodeUserPath = "$env:APPDATA\Code\User"
 
+# Ensure the VS Code settings directory exists
+if (!(Test-Path $vsCodeUserPath)) {
+    New-Item -ItemType Directory -Path $vsCodeUserPath -Force
+    Write-Output "✔ Created VS Code settings directory."
+}
+
 # Download and copy settings.json
 Invoke-WebRequest -Uri "$repoUrl/settings.json" -OutFile "$vsCodeUserPath\settings.json"
 Write-Host -ForegroundColor Green "✔ Copied settings.json to VS Code."
