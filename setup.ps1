@@ -18,6 +18,11 @@ Write-Host -ForegroundColor Green "✔ Copied settings.json to VS Code."
 Invoke-WebRequest -Uri "$repoUrl/keybindings.json" -OutFile "$vsCodeUserPath\keybindings.json"
 Write-Host -ForegroundColor Green "✔ Copied keybindings.json to VS Code."
 
+# Refresh environment variables
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+Write-Output "✔ Environment variables refreshed."
+
+
 # Download and install extensions
 $extensionsJson = "$env:TEMP\extensions.json"
 Invoke-WebRequest -Uri "$repoUrl/extensions.json" -OutFile $extensionsJson
