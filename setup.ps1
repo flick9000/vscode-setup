@@ -1,10 +1,10 @@
 # Installs the latest VS Code
-Write-Output "Installing VS Code..."
-winget install --id Microsoft.VisualStudioCode --accept-package-agreements --accept-source-agreements
 Write-Host -ForegroundColor Green "Installing VS Code..."
+winget install --id Microsoft.VisualStudioCode --accept-package-agreements --accept-source-agreements
+Write-Host -ForegroundColor Green "✔ VS Code Installed"
 
 
-Write-Output "Configuring VS Code..."
+Write-Host -ForegroundColor Green "Configuring VS Code..."
 
 # Define GitHub repository and VS Code paths
 $repoUrl = "https://raw.githubusercontent.com/flick9000/vscode-setup/main"
@@ -13,7 +13,7 @@ $vsCodeUserPath = "$env:APPDATA\Code\User"
 # Ensure the VS Code settings directory exists
 if (!(Test-Path $vsCodeUserPath)) {
     New-Item -ItemType Directory -Path $vsCodeUserPath -Force
-    Write-Output "✔ Created VS Code settings directory."
+   Write-Host -ForegroundColor Green "✔ Created VS Code settings directory."
 }
 
 # Download and copy settings.json
@@ -26,7 +26,7 @@ Write-Host -ForegroundColor Green "✔ Copied keybindings.json to VS Code."
 
 # Refresh environment variables
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-Write-Output "✔ Environment variables refreshed."
+Write-Host -ForegroundColor Green "✔ Environment variables refreshed."
 
 
 # Download and install extensions
@@ -35,8 +35,8 @@ Invoke-WebRequest -Uri "$repoUrl/extensions.json" -OutFile $extensionsJson
 $extensions = (Get-Content $extensionsJson | ConvertFrom-Json).extensions
 $extensions | ForEach-Object { 
     code --install-extension $_
-    Write-Output "✔ Installed $_"
+    Write-Host -ForegroundColor Cyan "✔ Installed $_"
 }
 Remove-Item $extensionsJson
 
-Write-Host -ForegroundColor Green "VS Code setup complete."
+Write-Host -ForegroundColor Green "✔ VS Code setup complete."
