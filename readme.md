@@ -1,4 +1,4 @@
-![App Screenshot](/preview.webp)
+![App Screenshot](/preview.png)
 
 # Install Config
 
